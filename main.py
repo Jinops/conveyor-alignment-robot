@@ -9,7 +9,7 @@ arduino = serial.Serial(
 
 def write_read(x):
     arduino.write(bytes(x, 'utf-8'))
-    time.sleep(0.05)
+    time.sleep(0.1)
     data = arduino.readline()
     return data
 
