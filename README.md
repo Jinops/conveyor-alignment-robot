@@ -1,2 +1,2 @@
-# baggage-claim-yolo
- yolo for baggage claim services
+# conveyor-alignment-robot
+WIP (OCT.2023 ~ DEC.2023)
