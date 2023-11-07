@@ -1,5 +1,5 @@
 #include <MyCobotBasic.h>
-#include <ParameterList.h>
+#include <ParameterList.h> // Define rx/tx port here!
 
 MyCobotBasic myCobot;
 int incomingByte;
@@ -45,25 +45,20 @@ void setup() {
   digitalWrite(LED_BUILTIN, LOW);
 
   init_angles(50);
-  Serial1.begin(9600);   // Cobot uses Serial0 (rx,tx 0)
+  Serial.begin(9600);   // Cobot uses Serial1 
 
-  test();
+  // test();
 }
 
 void loop() {
-  // if (Serial1.available()) {
-  //   incomingByte = Serial.parseInt();
+  if (Serial.available()) {
+    incomingByte = Serial.parseInt();
 
-  //   Serial1.print("I received: ");
-  //   Serial1.println(incomingByte, DEC);
+    Serial.print("I received: ");
+    Serial.println(incomingByte, DEC);
 
-  //   blink(incomingByte);
-
-  //   if (incomingByte == 99){
-  //     myCobot.setLEDRGB(byte(0), byte(0), byte(0));
-  //   } else {
-  //     myCobot.setLEDRGB(0, byte(incomingByte), 0);
-  //   }
-  // }
+    if (incomingByte <= 255){
+      myCobot.setLEDRGB(255, byte(incomingByte), 255);
+    }
+  }
 }
-
