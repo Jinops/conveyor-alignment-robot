@@ -21,28 +21,25 @@ def get_image():
   ret, img = cam.read()
   return img
 
-def get_image_t(file_name): # test
+def get_image_t(file_name): # for test
   img = cv2.imread('roboflow/train/images/'+file_name)
   return img
 
-def get_distance_t(file_name):
-  # for test
-  file=file_name[:-4]+'.txt'
-  with open('roboflow/train/labelTxt/'+file,'r') as data_file:
-    for line in data_file:
-        data = line.split()
-
+def get_distance():
   xy_list = []
-  for i in range(8):
-    xy_list.append(float(data[i]))
-    print('get_distance', 640, 640, list(map(int, xy_list)))
   distance = algo.get_distance(640, 640, xy_list)
   # num = 480
   return int(distance)
 
-def get_distance():
-  # for test
+def get_distance_t(file_name): # for test
+  file_name=file_name[:-4]+'.txt'
+  with open('roboflow/train/labelTxt/'+file_name,'r') as data_file:
+    for line in data_file:
+        data = line.split()
   xy_list = []
+  for i in range(8):
+    xy_list.append(float(data[i]))
+    print('get_distance', 640, 640, list(map(int, xy_list)))
   distance = algo.get_distance(640, 640, xy_list)
   # num = 480
   return int(distance)
@@ -68,13 +65,11 @@ def display(img, distance):
 
 ####
 
-# mode = input('Select mode - (Enter) Automative (0) Manual : ')
-
-# while mode==0:
-#   data = input("Input Serial Data (q to close): ")
-#   if data=='q':
-#     break
-#   serial_write(data)
+def main():
+  mode = input('Select mode - (Enter) Automative (0) Manual : ')
+  while mode==0:
+    mode_manual()
+  mode_main()
 
 def mode_manual():
   data = input("Input Serial Data (q to close): ")
