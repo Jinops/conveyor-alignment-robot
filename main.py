@@ -8,12 +8,13 @@ interval_sec = 1
 
 try:
   arduino = serial.Serial(
-    port='/dev/tty.usbmodem1401',
+    port='/dev/tty.usbmodem11401',
     baudrate=9600,
     timeout=.1
     )
 except:
   print('!arduino serial connection failed!')
+  print(os.system('ls /dev/tty.*'))
 
 def get_image():
   cam = cv2.VideoCapture(1)
@@ -47,6 +48,7 @@ def get_distance():
   return int(distance)
 
 def get_distance_100(distance, img_height):
+  # TODO: over 100
   print('distance: ', distance)
   print('distance(100): ', str(math.floor((distance/img_height*100))))
   return str(math.floor((distance/img_height*100)))
@@ -74,8 +76,15 @@ def display(img, distance):
 #     break
 #   serial_write(data)
 
-def validate_algo():
-  file_idx = int(input('input image idx: ')) # For test
+def mode_manual():
+  data = input("Input Serial Data (q to close): ")
+  if data=='q':
+    pass
+  result = serial_write(data)
+  print(result)
+
+def mode_validate_algo():
+  file_idx = int(input('Input image idx: ')) # For test
   file_name = os.listdir('roboflow/train/images/')[file_idx]
   print(file_name)
   img = get_image_t(file_name)
@@ -83,7 +92,7 @@ def validate_algo():
   display(img, distance)
   distance_100 = get_distance_100(distance, img.shape[0])
 
-def main():
+def mode_main():
   img = get_image()
   distance = get_distance()
   display(img, distance)
@@ -93,4 +102,6 @@ def main():
   time.sleep(interval_sec)
   
 while True:
-  validate_algo()
+  # mode_manual()
+  # mode_main()
+  mode_validate_algo()

@@ -1,4 +1,3 @@
-# input_list 받아서 첫번째 함수로 가장 위쪽에 있는 점을 x1,y1으로 정의하고 두번째 함수로 얼마나 움직일지 정함
 import math
 
 # 5도 이하로 기울어진 것은 정상으로 가정
@@ -9,6 +8,7 @@ list = [702.6933997824381, 188.96310868445823, 614.2342629477935, 581.3888278593
 
 # 함수에 리스트 대입
 def get_distance(width, height, input_list):
+    print('get_distance', width, height, input_list)
    # y값 중 가장 작은 값을 y1으로 고정하고 시계방향으로 정렬
     y1 = min(input_list[1], input_list[3], input_list[5], input_list[7])
     y1_index = input_list.index(y1)
@@ -50,11 +50,14 @@ def get_distance(width, height, input_list):
     if abs(tan) < math.tan(radian) and x2 - x1 > y4 - y1:
         mo = 0
     elif abs(tan) < math.tan(radian) and x2 - x1 < y4 - y1:
-        mo = (height - y4 + 0.5*(y4 - y1))
-    elif (x2 - x1) ** 2 + (y2 - y1) ** 2 > (x4 - x1) ** 2 + (y4 - y1) ** 2:
-        mo = (height - y3 + (0.5 * (y3 - y4)))
-    else:
-        # if y4 > yy:
         mo = height - y4 + 0.5*(y4 - y1)
+    elif (x2 - x1) ** 2 + (y2 - y1) ** 2 > (x4 - x1) ** 2 + (y4 - y1) ** 2:
+        mo = height - y3 + (0.5 * (y3 - y4))
+    else:
+        if y4 > yy:
+            mo = height - y3 + 0.5*(y3 - y1)
+        else:
+            mo = height - y1
 
     return mo
+    
