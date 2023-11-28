@@ -7,10 +7,11 @@ int serialInput;
 Coords coords_0 = {32.50,-60.40,93.60,93.68,11.88,-81.59};
 Coords coords_100 = {133.00,-48.40,93.50,91.59,-20.93,-82.74};
 Coords coordsToMove;
+Coords coordsToIdle;
 
 int speed = 30; // movement speed
-int msToStay = 2000; // time for moving+staying
-int IdleAddY = 10; // adding Y of Coord after stay
+int msToStay = 3000; // time for moving+staying
+int IdleAddZ = 25; // adding Y of Coord after stay
 
 void initAngles(){
   Angles angles = {0, 0, 0, 0, 0, 0};
@@ -51,8 +52,11 @@ void move(int length){
     coordsToMove[i] = coords_0[i] + (coords_100[i] - coords_0[i]) * length / 100;
   }
   myCobot.writeCoords(coordsToMove, speed);
+  printCoords();
   delay(msToStay);
-  // myCobot.writeCoord(Y, myCobot.getCoords()[Y]+IdleAddY, speed);
+  coordsToIdle = coordsToMove;
+  coordsToIdle[Z] += IdleAddZ;
+  myCobot.writeCoords(coordsToIdle, speed);
   printCoords();
 }
 
