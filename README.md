@@ -1,7 +1,3 @@
-# rb-tree
-
-WIP (nov.2023 ~ dec.2023)
-
-Red-black Tree in python
-
-![gui](./screenshot.png)
+# conveyor-alignment-robot
+WIP (OCT.2023 ~ DEC.2023)
+![flow diagram](./flow_diagram.png)
