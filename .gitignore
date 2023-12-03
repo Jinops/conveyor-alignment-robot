@@ -152,3 +152,4 @@ cython_debug/
 #.idea/
 .DS_Store
 model/yolov5_obb/
+model/datasets/
