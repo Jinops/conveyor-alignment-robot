@@ -24,7 +24,7 @@ result = detect.run(
  device=0,
  agnostic_nms=True,
  return_result=True,
- # classes=0
+ classes=0
  )
 
 print(result)
