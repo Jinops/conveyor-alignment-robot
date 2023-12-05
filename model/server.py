@@ -27,11 +27,11 @@ async def add_staff(file: UploadFile=File(..., media_type='image/jpeg')):
   weights=weights,
   source=source,
   conf_thres=0.01,
-  imgsz=(416,416),
+  imgsz=(640,640),
   device=0,
   agnostic_nms=True,
   return_result=True,
-  classes=0
+  # classes=0
   )
   
   return {"boxes": result}
