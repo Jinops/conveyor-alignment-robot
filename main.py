@@ -4,6 +4,7 @@ import time
 import math
 import algo
 import os
+from request import get_model_result
 interval_sec = 1
 
 try:
@@ -19,14 +20,14 @@ except:
 def get_image():
   cam = cv2.VideoCapture(1)
   ret, img = cam.read()
+  img = cv2.imencode('.jpg', img)[1]
   return img
 
 def get_image_t(file_name): # for test
   img = cv2.imread('roboflow/train/images/'+file_name)
   return img
 
-def get_distance():
-  xy_list = []
+def get_distance(xy_list):
   distance = algo.get_distance(640, 640, xy_list)
   # num = 480
   return int(distance)
@@ -89,14 +90,19 @@ def mode_validate_algo():
 
 def mode_main():
   img = get_image()
-  distance = get_distance()
+  model_result = get_model_result(img)
+  if model_result is None:
+    return 
+  distance = get_distance(model_result[1])
   display(img, distance)
   distance_100 = get_distance_100(distance, img.shape[0])
   result = serial_write(distance_100)
   print(result)
   time.sleep(interval_sec)
-  
-while True:
-  # mode_manual()
-  # mode_main()
-  mode_validate_algo()
+
+# while True:
+#   # mode_manual()
+#   mode_main()
+#   # mode_validate_algo()
+
+mode_main()
