@@ -155,3 +155,4 @@ model/yolov5_obb/
 model/datasets/
 runs/detect/
 runs/train/exp/event*
+model/predict.jpg
