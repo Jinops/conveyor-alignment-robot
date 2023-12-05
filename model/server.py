@@ -33,7 +33,7 @@ async def add_staff(file: UploadFile=File(..., media_type='image/jpeg')):
   return_result=True,
   classes=0
   )
-  #return {"boxes": result}
-  return {"boxes": None}
+  
+  return {"boxes": result}
 
 uvicorn.run(app, host="0.0.0.0", port=8000)
