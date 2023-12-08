@@ -1,3 +1,5 @@
+# Author: Subin Lim
+
 import math
 
 # 5도 이하로 기울어진 것은 정상으로 가정

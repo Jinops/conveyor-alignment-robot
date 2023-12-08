@@ -18,7 +18,7 @@ def get_model_result(img):
 def get_best_result(boxes):
   best_box = None
   for box in boxes:
-    # (class, [x1,y1,x2,y2,x3,y3,x4,y4], acc)
+    # (class, [x1,y1,x2,y2,x3,y3,x4,y4], conf)
     if best_box is None or box[2] > best_box[2]:
       best_box = box
   return best_box
