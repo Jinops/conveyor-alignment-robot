@@ -6,9 +6,12 @@ import algo
 import os
 import request
 
-interval_sec = 1
+interval_sec = 0.1
 width=640
 height=640
+
+test_distances = [320, 180, 480, 320, 0, 310]
+test_distance_idx = 0
 
 try:
   arduino = serial.Serial(
@@ -43,6 +46,15 @@ def get_distance(xy_list):
   print('distance: ', distance)
   return int(distance)
 
+def get_test_distance():
+  global test_distance_idx
+  if test_distance_idx >= len(test_distances):
+    test_distance_idx = 0
+  distance = test_distances[test_distance_idx]
+  test_distance_idx += 1
+  print('distance: ', distance)
+  return distance
+
 def get_distance_100(distance, img_height):
   distance_100 = math.floor(distance/img_height*100)
   distance_100 = min(100, max(0, distance_100))
@@ -56,7 +68,6 @@ def serial_write(x):
   return data
 
 def display(img, distance):
-  print("display")
   img = cv2.line(img, (width//2, height), (width//2, height-distance), (0,0,255), 10)
   cv2.imshow('window', img)
   cv2.waitKey(1) & 0xFF == ord('0')
@@ -85,6 +96,7 @@ def mode_main():
     display(img, 0)
     return 
   distance = get_distance(model_result[1])
+  # distance = get_test_distance()
   display(img, distance)
   distance_100 = get_distance_100(distance, img.shape[0])
   result = serial_write(distance_100)
