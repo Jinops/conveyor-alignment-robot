@@ -17,8 +17,8 @@ async def main():
   return "OK"
 
 @app.post("/predict")
-async def add_staff(file: UploadFile=File(..., media_type='image/jpeg')):
-  time_now = datetime.now().strftime('%y%m%d_%H%M%S')
+async def predict(file: UploadFile=File(..., media_type='image/jpeg')):
+  time_now = str(datetime.timestamp(datetime.now()))
   image_dir = os.path.join(current_dir, 'images', time_now)
   os.makedirs(image_dir)
   
