@@ -4,13 +4,13 @@
 MyCobotBasic myCobot;
 int serialInput;
 
-Coords coords_0 = {32.50,-60.40,93.60,93.68,11.88,-81.59};
-Coords coords_100 = {133.00,-48.40,93.50,91.59,-20.93,-82.74};
+Coords coords_0 = {32.70,-70.10,104.40,89.73,-14.90,-81.40};
+Coords coords_100 = {132.90,-51.70,100.40,92.50,-65.13,-91.21};
 Coords coordsToMove;
 Coords coordsToIdle;
 
 int speed = 30; // movement speed
-int msToStay = 3000; // time for moving+staying
+int msToStay = 3500; // time for moving+staying
 int IdleAddZ = 25; // adding Y of Coord after stay
 
 void initAngles(){

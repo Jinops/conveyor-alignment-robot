@@ -4,7 +4,7 @@ import cv2
 import os
 
 host=os.environ.get('host')
-classes=[0, 1, 2, 3]
+classes=[1, 2, 3, 4]
 
 def get_model_result(img):
   global host
