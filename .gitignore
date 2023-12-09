@@ -156,3 +156,4 @@ model/datasets/
 runs/detect/
 runs/train/exp/event*
 
+server/images/*
