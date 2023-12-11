@@ -10,9 +10,6 @@ interval_sec = 0.1
 width=640
 height=640
 
-test_distances = [320, 180, 480, 320, 0, 310]
-test_distance_idx = 0
-
 try:
   arduino = serial.Serial(
     port='/dev/tty.usbmodem1301',
@@ -45,6 +42,9 @@ def get_distance(xy_list):
   distance = algo.get_distance(width, height, xy_list)
   print('distance: ', distance)
   return int(distance)
+
+test_distances = [320, 180, 480, 320, 0, 310]
+test_distance_idx = 0
 
 def get_test_distance():
   global test_distance_idx
