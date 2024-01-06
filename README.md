@@ -14,14 +14,16 @@ https://github.com/Jinops/conveyor-alignment-robot/assets/46846964/0341c5d7-529b
 
 ## 개발 환경
 ### 로봇
-- Mycobot 280 for Arduino
+- Mycobot 280 for Arduino (2020)
 - Arduino Mega (최소 2쌍의 Rx/Tx 포트 요구)
 
 ### 메인PC
+- MacOS 12.4
 - Python 3.10
 - Arduino IDE 2.2.1
 
 ### 서버
+- Windows 10
 - Python 3.10
 - cuda toolkit 11.8 (최소 11.3 요구)
 - cuda driver 12.2
@@ -32,7 +34,7 @@ https://github.com/Jinops/conveyor-alignment-robot/assets/46846964/0341c5d7-529b
 ![flow diagram](./flow_diagram.png)
 
 1. 카메라로부터 이미지 촬영
-2. 전처리 후 `./predct`로 GPU서버에 이미지 POST
+2. 전처리 후 `./predict`로 GPU서버에 이미지 POST
 3. GPU서버에서 yolo_obb 모델 돌린 후, 결과(bounding box, confidence, class, ...) 반환
 4. 서버 응답으로부터 최선의 bounding box 선정, 이동거리 계산
 5. 계산된 결과를 시리얼통신을 통해 아두이노로 전송
