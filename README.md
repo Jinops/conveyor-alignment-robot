@@ -39,3 +39,6 @@ https://github.com/Jinops/conveyor-alignment-robot/assets/46846964/0341c5d7-529b
 4. 서버 응답으로부터 최선의 bounding box 선정, 이동거리 계산
 5. 계산된 결과를 시리얼통신을 통해 아두이노로 전송
 6. 아두이노를 통해 calibration을 선행한 뒤, 전달받은 거리만큼 로봇 팔 이동
+
+## 모델
+https://github.com/Jinops/yolov5_obb
