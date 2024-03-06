@@ -4,8 +4,9 @@ detect object's rotation and align robot on conveyor belt
 
 컨베이어벨트 위의 물체 회전량 인식 및 정렬 로봇
 
+<img height=480 src="https://github.com/Jinops/conveyor-alignment-robot/assets/46846964/2ee12103-c21a-4745-b2ab-2ea68e54de4e">
 
-https://github.com/Jinops/conveyor-alignment-robot/assets/46846964/0341c5d7-529b-471e-9ff4-080d53e8761a
+https://youtu.be/UYmC-FVZ9Nw?si=ej0lt7o5SRXaZSoe
 
 ## 주요 구현
 1. 로봇 코드
